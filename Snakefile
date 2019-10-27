@@ -14,7 +14,7 @@ rule prokka:
     output:
         "{run}.gff"
     params:
-        extra = lambda wildcards: "--metagenome --kingdom Viruses --gcode 1 --prefix {run} --force".format(run = wildcards.run)
+        extra = lambda wildcards: "--metagenome --kingdom Viruses --gcode 1 --norrna --notrna --prefix {run} --force".format(run = wildcards.run)
     threads: 4
     wrapper:
         "file:../scripts/prokka/wrapper.py"
