@@ -4,7 +4,7 @@ PROTEINS = os.environ["RVDB_PROT"]
 HMMS = os.environ["RVDB_HMMR"]
 
 FILES_PATH = config["contigs"]
-RUNS,_ = glob_wildcards(FILES_PATH + "{run}_{contigs}.fa")
+RUNS,_ = glob_wildcards(os.path.join(FILES_PATH, "{run}_{contigs}.fa"))
 
 rule all:
     input:
@@ -12,7 +12,7 @@ rule all:
 
 rule prokka:
     input:
-        "{run}_viral-contigs.fa"
+        os.path.join(FILES_PATH.split("/")[0], "{run}_viral-contigs.fa")
     output:
         expand(os.path.join(FILES_PATH.split("/")[0], "prokka/{{run}}.{ext}"), ext = ["faa", "gbk"])
     shadow: "full"
