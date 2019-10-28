@@ -25,9 +25,9 @@ rule prokka:
 
 rule parse_prokka:
     input: 
-        "prokka/{run}.gbk"
+        os.path.join(FILES_PATH.split("/")[0], "prokka/{run}.gbk")
     output:
-        "prokka/{run}.csv"
+        os.path.join(FILES_PATH.split("/")[0], "prokka/{run}.csv")
     group: "one"
     conda:
         "https://raw.githubusercontent.com/avilab/virome-wrappers/master/blast/parse/environment.yaml"
