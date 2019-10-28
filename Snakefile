@@ -19,3 +19,16 @@ rule prokka:
     threads: 4
     wrapper:
         "https://raw.githubusercontent.com/avilab/virome-wrappers/blast5/prokka"
+
+rule hmmer:
+    input: 
+        "{run}/{run}.faa"
+    output:
+        "{run}/{run}.out"
+    params:
+        profile = HMMS
+    conda:
+        "../hmmer/environment.yaml"
+    shell:
+        "hmmsearch {params.profile} {input} > {output}"
+    
