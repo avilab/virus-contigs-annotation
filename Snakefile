@@ -28,7 +28,7 @@ rule hmmer:
     params:
         profile = HMMS
     conda:
-        "../hmmer/environment.yaml"
+        "scripts/hmmer/environment.yaml"
     shell:
         "hmmsearch {params.profile} {input} > {output}"
     
