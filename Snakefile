@@ -28,6 +28,7 @@ rule hmmer:
     params:
         hmmdb = HMMS,
         extra = "--noali --notextw --qformat fasta"
+    threads: 4
     conda:
         "scripts/hmmer/environment.yaml"
     shell:
