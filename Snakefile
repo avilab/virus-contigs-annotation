@@ -1,6 +1,3 @@
-import pandas as pd
-import os
-
 PROTEINS = os.environ["RVDB_PROT"]
 HMMS = os.environ["RVDB_HMMR"]
 
