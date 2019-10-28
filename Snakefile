@@ -16,6 +16,7 @@ rule prokka:
     output:
         expand(os.path.join(FILES_PATH.split("/")[0], "prokka/{{run}}.{ext}"), ext = ["faa", "gbk"])
     shadow: "full"
+    group: "one"
     params:
         extra = lambda wildcards: "--mincontiglen 1000 --metagenome --proteins {prot} --hmms {hmms} --kingdom Viruses --locustag {run} --prefix {run} --force".format(run = wildcards.run, prot = PROTEINS, hmms = HMMS)
     threads: 4
@@ -27,6 +28,7 @@ rule parse_prokka:
         "prokka/{run}.gbk"
     output:
         "prokka/{run}.csv"
+    group: "one"
     conda:
         "https://raw.githubusercontent.com/avilab/virome-wrappers/master/blast/parse/environment.yaml"
     script:
