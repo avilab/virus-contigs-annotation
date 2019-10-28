@@ -32,5 +32,5 @@ rule hmmer:
     conda:
         "scripts/hmmer/environment.yaml"
     shell:
-        "hmmscan {params.extra} --cpu {threads} {params.hmmdb} {input} --tblout {output} > /dev/null"
+        "hmmscan {params.extra} --cpu {threads} {params.hmmdb} {input} > {output}"
     
