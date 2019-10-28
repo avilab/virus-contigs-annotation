@@ -12,7 +12,7 @@ rule all:
 
 rule prokka:
     input:
-        os.path.join(FILES_PATH.split("/")[0], "{run}_viral-contigs.fa")
+        os.path.join(FILES_PATH, "{run}_viral-contigs.fa")
     output:
         expand(os.path.join(FILES_PATH.split("/")[0], "prokka/{{run}}.{ext}"), ext = ["faa", "gbk"])
     shadow: "full"
