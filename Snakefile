@@ -3,7 +3,7 @@ import os
 PROTEINS = os.environ["RVDB_PROT"]
 HMMS = os.environ["RVDB_HMMR"]
 
-FILES_PATH = "assemble/contigs"
+FILES_PATH = config["contigs"]
 RUNS,_ = glob_wildcards(FILES_PATH + "/{run}_{contigs}.fa")
 
 rule all:
