@@ -6,7 +6,7 @@ RUNS,_ = glob_wildcards(FILES_PATH + "/{run}_{contigs}.fa")
 
 rule all:
     input:
-        expand("{run}/{run}.{ext}", run = set(RUNS), ext = ["fna", "gff", "tsv", "err", "faa", "tbl", "gbk", "ffn", "sqn", "log", "fsa", "txt", "out"])
+        expand("{run}/{run}.{ext}", run = set(RUNS), ext = ["fna", "gff", "tsv", "err", "faa", "tbl", "gbk", "ffn", "sqn", "log", "fsa", "txt", "hmmer"])
 
 rule prokka:
     input:
@@ -24,7 +24,7 @@ rule hmmer:
     input: 
         "{run}/{run}.faa"
     output:
-        "{run}/{run}_hmmer.tbl"
+        "{run}/{run}.hmmer"
     params:
         hmmdb = HMMS,
         extra = "--noali --notextw --qformat fasta"
