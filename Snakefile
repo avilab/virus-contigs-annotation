@@ -6,7 +6,7 @@ RUNS,_ = glob_wildcards(FILES_PATH + "/{run}_{contigs}.fa")
 
 rule all:
     input:
-        expand("{run}/{run}.{ext}", run = set(RUNS), ext = ["fna", "gff", "tsv", "err", "faa", "tbl", "gbk", "ffn", "sqn", "log", "fsa", "txt"])
+        expand("{run}/{run}.{ext}", run = set(RUNS), ext = ["fna", "gff", "tsv", "err", "faa", "tbl", "gbk", "ffn", "sqn", "log", "fsa", "txt", "out"])
 
 rule prokka:
     input:
