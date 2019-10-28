@@ -24,11 +24,12 @@ rule hmmer:
     input: 
         "{run}/{run}.faa"
     output:
-        "{run}/{run}.out"
+        "{run}/{run}_hmmer.tbl"
     params:
-        profile = HMMS
+        hmmdb = HMMS,
+        extra = "--noali --notextw --qformat fasta"
     conda:
         "scripts/hmmer/environment.yaml"
     shell:
-        "hmmsearch {params.profile} {input} > {output}"
+        "hmmscan {params.extra} --cpu {threads} {params.hmmdb} {input} --tblout {output} > /dev/null"
     
