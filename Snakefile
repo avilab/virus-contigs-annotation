@@ -17,7 +17,7 @@ rule prokka:
     shadow: "full"
     group: "one"
     params:
-        extra = lambda wildcards: "--mincontiglen 1000 --metagenome --proteins {prot} --hmms {hmms} --kingdom --gcode 1 Viruses --locustag {run} --prefix {run} --force".format(run = wildcards.run, prot = PROTEINS, hmms = HMMS)
+        extra = lambda wildcards: "--mincontiglen 1000 --metagenome --proteins {prot} --hmms {hmms} --kingdom Viruses --gcode 1 --locustag {run} --prefix {run} --force".format(run = wildcards.run, prot = PROTEINS, hmms = HMMS)
     threads: 4
     wrapper:
         "https://raw.githubusercontent.com/avilab/virome-wrappers/blast5/prokka"
